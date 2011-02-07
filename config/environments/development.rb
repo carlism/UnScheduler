@@ -22,5 +22,12 @@ Unscheduler::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  # Adding this as part of the devise install
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+end
+
+Webrat.configure do |config|
+  config.mode = :rails
 end
 
