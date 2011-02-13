@@ -1,7 +1,7 @@
 <div id="new_event">
-	<h2>New Event</h2>
+	<h2>Edit Event</h2>
 
-	<%= form_for @event do |f| %>
+	<%= form_for @event, :url => { :action => :update } do |f| %>
   	<p><%= f.label :name %><br />
   		<%= f.text_field :name %></p>
 
@@ -14,6 +14,6 @@
       <p><%= f.label :image_url %><br />
           <%= f.text_field :image_url %></p>
 
-  	<p><%= f.submit "Create" %> <%=link_to "Cancel", root_path %></p>
+  	<p><%= f.submit "Update" %> <%=link_to "Cancel", root_path %></p>
 	<% end %>
 </div>

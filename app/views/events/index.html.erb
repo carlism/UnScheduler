@@ -2,7 +2,7 @@
 
 <div class="grey_bar">
 	<% if user_signed_in? %>
-		<div class="right_controls"><%= link_to "Create Event", new_event_path %></div>
+		<div class="right_controls"><%= link_to "Create Event", new_event_path, :remote => true %></div>
 	<% end %>	
 	<h1>Events</h1>
 </div>
@@ -10,10 +10,17 @@
 	<% @events.each do |event| %>
 	<div class="event_block">
 	  <div class="right_controls">
-			<a href="<%=event.site_url%>">
-				<img class="logo_thumb" src="<%=event.image_url%>"/>
-			</a>
-		</div>
+		<%=link_to image_tag(event.image_url, :class=>'logo_thumb'), event.site_url%>
+      </div>
+      <div class="right_controls">
+        <% if event.admins.exists?(current_user) %>
+            <%=link_to image_tag("icons/settings.png"), edit_event_path(event), :remote => true %>
+            <br/>
+        <% end %>
+        <% if event.creators.exists?(current_user) %>
+            <%=link_to image_tag("icons/trash.png"), event, :confirm => "Are you sure?", :method => :delete %>
+        <% end %>
+      </div>
 		<h2><%= link_to event.name, event %></h2>
 		<%= event.description%>
 	</div>
