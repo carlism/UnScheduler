@@ -19,10 +19,11 @@ class EventsController < ApplicationController
   end
   
   def edit
-    @events = Event.find(params[:id])    
+    @event = Event.find(params[:id])    
   end
   
   def show
-    @events = Event.find(params[:id])    
+    @event = Event.find(params[:id])    
+    render :layout => "grid"
   end
 end

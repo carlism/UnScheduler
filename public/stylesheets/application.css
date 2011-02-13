@@ -74,3 +74,10 @@ h1 {
 .grey_bar a {
 	color: white;
 }
+
+div.event_block {
+	width: 100%;
+}
+.logo_thumb {
+	height: 80px;
+}

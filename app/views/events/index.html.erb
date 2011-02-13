@@ -1,0 +1,21 @@
+<% title "Events" %>
+
+<div class="grey_bar">
+	<% if user_signed_in? %>
+		<div class="right_controls"><%= link_to "Create Event", new_event_path %></div>
+	<% end %>	
+	<h1>Events</h1>
+</div>
+<div class="content">
+	<% @events.each do |event| %>
+	<div class="event_block">
+	  <div class="right_controls">
+			<a href="<%=event.site_url%>">
+				<img class="logo_thumb" src="<%=event.image_url%>"/>
+			</a>
+		</div>
+		<h2><%= link_to event.name, event %></h2>
+		<%= event.description%>
+	</div>
+	<% end %>
+</div>
