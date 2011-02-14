@@ -1,4 +1,9 @@
 <% title @event.name %>
+<div class="right_controls">
+  <select>
+    <%= options_from_collection_for_select @event.event_dates, 'id', 'event_date' %>
+  </select>
+</div>
 <h1>
 	<img class="logo_thumb" src="<%=@event.image_url%>"/>
 	<%= @event.name %>

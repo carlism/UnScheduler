@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  has_many :event_dates
   has_many :roles, :dependent =>:destroy
   has_many :users, :through => :roles
 
