@@ -5,9 +5,10 @@ class Event < ActiveRecord::Base
 
   has_many :creators, :through => :roles,
            :source => :user,
-           :conditions => "role_type=#{Role::CREATOR_ROLE}"
+           :conditions => ["roles.role_type = 'creator'"]
+  # TODO:  Look up using scopes for this bit.
+
   has_many :admins, :through => :roles,
            :source => :user,
-           :conditions => "role_type=#{Role::CREATOR_ROLE} or role_type=#{Role::ADMIN_ROLE}"
-  
+           :conditions => ["roles.role_type in (?, ?)", "creator", "admin"]
 end
