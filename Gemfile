@@ -8,6 +8,11 @@ gem 'rails', '3.0.3'
 gem 'jquery-rails'
 gem 'devise'
 
+# Use haml
+gem 'ruby_parser'
+gem 'hpricot'
+gem 'haml'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

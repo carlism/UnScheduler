@@ -1,0 +1,7 @@
+- title @event.name
+.right_controls
+  %select
+    = options_from_collection_for_select @event.event_dates, 'id', 'event_date'
+%h1
+  %img.logo_thumb{:src => @event.image_url}/
+  = @event.name

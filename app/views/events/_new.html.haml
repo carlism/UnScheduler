@@ -1,0 +1,22 @@
+#new_event
+  %h2 New Event
+  = form_for @event do |f|
+    %p
+      = f.label :name
+      %br/
+      = f.text_field :name
+    %p
+      = f.label :description
+      %br/
+      = f.text_field :description
+    %p
+      = f.label :site_url
+      %br/
+      = f.text_field :site_url
+    %p
+      = f.label :image_url
+      %br/
+      = f.text_field :image_url
+    %p
+      = f.submit "Create"
+      =link_to "Cancel", root_path
