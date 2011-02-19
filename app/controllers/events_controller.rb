@@ -37,7 +37,12 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id], :include=>:event_dates)
-    render :layout => "grid"
+    @event_date = @event.event_dates.first
+    if @event_date
+      redirect_to(event_event_date_url(@event, @event_date))
+    else
+      redirect_to(new_event_event_date_url(@event))
+    end
   end
 
   def destroy

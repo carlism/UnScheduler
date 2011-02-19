@@ -1,4 +1,10 @@
 Unscheduler::Application.routes.draw do
+  get "event_dates/destroy"
+
+  get "event_dates/new"
+
+  get "event_dates/create"
+
   get "roles/destroy"
 
   devise_for :users
@@ -15,7 +21,9 @@ Unscheduler::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-  resources :events
+  resources :events do
+    resources :event_dates
+  end
   resources :roles
 
   # Sample resource route with options:
