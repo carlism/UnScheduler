@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110214212138) do
+ActiveRecord::Schema.define(:version => 20110219211707) do
 
   create_table "event_dates", :force => true do |t|
     t.integer  "event_id"
@@ -28,12 +28,42 @@ ActiveRecord::Schema.define(:version => 20110214212138) do
     t.string   "description"
   end
 
+  create_table "presentations", :force => true do |t|
+    t.string   "title"
+    t.string   "presenter"
+    t.string   "contact"
+    t.integer  "room_id"
+    t.integer  "time_slot_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "presentations", ["room_id", "time_slot_id"], :name => "index_presentations_on_room_id_and_time_slot_id", :unique => true
+
   create_table "roles", :force => true do |t|
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role_type"
+  end
+
+  create_table "rooms", :force => true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.integer  "capacity"
+    t.integer  "position"
+    t.integer  "event_date_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "time_slots", :force => true do |t|
+    t.time     "start_time"
+    t.integer  "duration"
+    t.integer  "event_date_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
