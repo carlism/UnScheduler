@@ -3,12 +3,11 @@ class Event < ActiveRecord::Base
   has_many :roles, :dependent =>:destroy
   has_many :users, :through => :roles
 
-  has_many :creators, :through => :roles,
-           :source => :user,
-           :conditions => ["roles.role_type = 'creator'"]
-  # TODO:  Look up using scopes for this bit.
+  def admin?(user)
+    roles.admin.where(:user_id=>user.id).size > 0
+  end
 
-  has_many :admins, :through => :roles,
-           :source => :user,
-           :conditions => ["roles.role_type in (?, ?)", "creator", "admin"]
+  def creator?(user)
+    roles.creator.where(:user_id=>user.id).size > 0
+  end
 end

@@ -72,12 +72,23 @@ h1 {
 	padding: 0px 10px;
 }
 .grey_bar a {
-	color: white;
+	color: grey;
+    background-color: white;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    padding: 0px 10px;
 }
-
 div.event_block {
 	width: 100%;
 }
 .logo_thumb {
 	height: 80px;
+}
+#admins {
+    margin: 4px 0;
+}
+.admin {
+    display:inline;
+    padding:3px 6px;
+    margin:2px;
 }

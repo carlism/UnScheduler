@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   def index
-    @events = Event.find(:all)
+    @events = Event.all
   end
   
   def new
@@ -22,7 +22,8 @@ class EventsController < ApplicationController
   end
   
   def edit
-    @event = Event.find(params[:id])    
+    @event = Event.find(params[:id])
+    @new_admin = @event.roles.build(:role_type=>'admin')
   end
 
   def update
@@ -53,4 +54,5 @@ class EventsController < ApplicationController
 
     redirect_to(events_url)
   end
+
 end

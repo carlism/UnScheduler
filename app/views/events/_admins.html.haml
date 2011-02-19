@@ -1,0 +1,7 @@
+- @event.roles.admin.each do |role|
+  .admin.grey_bar
+    = role.user.email
+    = link_to('X', role, :remote=>true, :method => :delete) if role.role_type != 'creator'
+- flash.each do |name, msg|
+  = content_tag :div, msg, :id => "flash_#{name}"
+  - flash.clear
