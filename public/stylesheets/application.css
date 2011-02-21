@@ -7,7 +7,7 @@ body {
 h1 {
 	margin: 0px;
 }
-#user_session {
+#dialog_box {
 	position: absolute;	
 	top: 15%;
 	left: 15%;
@@ -22,11 +22,11 @@ h1 {
 	overflow: auto;
 	display: none;
 }
-#user_session #sign_up {
+#dialog_box #sign_up {
 	float:right;
 	width: 50%;
 }
-#user_session #sign_in {
+#dialog_box #sign_in {
 	float:left;
 	width: 40%;
 	border-right: 1px solid #999;
