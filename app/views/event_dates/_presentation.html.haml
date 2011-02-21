@@ -1,0 +1,17 @@
+- if !@presentation.nil? and @presentation.respond_to? :title
+  #presentation_#{@presentation.id}.presentation
+    .buttons
+      = image_tag 'replace.png', :alt=>'Drag-n-drop here'
+      %br
+      = link_to image_tag('delete.png', :alt=>'Delete', :border=>0), @presentation, :confirm => 'Are you sure?', :method => :delete
+    %strong= link_to @presentation.title, edit_presentation_path(@presentation)
+    %br
+    = @presentation.presenter
+    %br
+    = @presentation.presenter_email
+- else
+  #empty_#{@time_slot_id}_#{@room_id}.presentation
+    .buttons
+      = image_tag 'replace.png'
+      %br
+    = link_to 'empty', :controller=>:presentations, :action=>:new, :params=>{:presentation=>{:room_id=>@room_id, :timeslot_id=>@time_slot_id}}

@@ -21,3 +21,13 @@
 %h1
   %img.logo_thumb{:src => @event.image_url}/
   = @event.name
+
+%table.schedule
+  = render :layout=>rotation_rows do
+    %td
+      - if !@presentation.nil? and @presentation.respond_to? :title
+        %strong= link_to @presentation.title, presentation_path(@presentation)
+        %br
+        = linkify @presentation.presenter
+      - else
+        &nbsp;
