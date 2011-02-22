@@ -1,12 +1,4 @@
 Unscheduler::Application.routes.draw do
-  get "event_dates/destroy"
-
-  get "event_dates/new"
-
-  get "event_dates/create"
-
-  get "roles/destroy"
-
   devise_for :users
 
   # The priority is based upon order of creation:
@@ -25,6 +17,8 @@ Unscheduler::Application.routes.draw do
     resources :event_dates
   end
   resources :roles
+  resources :rooms
+  resources :time_slots
 
   # Sample resource route with options:
   #   resources :products do

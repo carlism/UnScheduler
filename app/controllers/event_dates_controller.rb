@@ -26,5 +26,6 @@ class EventDatesController < ApplicationController
   def show
     @event_date = EventDate.find(params[:id])
     @event = @event_date.event
+    @grid = @event_date.build_grid
   end
 end

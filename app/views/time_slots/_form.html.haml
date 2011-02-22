@@ -1,0 +1,12 @@
+= form_for @time_slot do |f|
+  = f.hidden_field :event_date_id
+  %p= f.label :start_time
+  %br
+  = f.text_field :start_time
+
+  %p= f.label :duration
+  %br
+  = f.text_field :duration
+
+  = f.submit @time_slot.id ? "Update" : "Create"
+

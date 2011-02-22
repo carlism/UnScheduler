@@ -1,5 +1,5 @@
 %tr
   %th.col_header Time
   - @event_date.rooms.each do |room|
-    %th{ width=> 90/@event_date.rooms.size }
+    %th{ :width=> 90/@event_date.rooms.size }
       = "#{room.name} (#{room.location})"

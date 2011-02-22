@@ -22,6 +22,9 @@
   %img.logo_thumb{:src => @event.image_url}/
   = @event.name
 
+- if @event.admin?(current_user)
+  = link_to "new room", new_room_path({:event_date_id=>@event_date.id}), :remote=>true
+  = link_to "new time", new_time_slot_path({:event_date_id=>@event_date.id}), :remote=>true
 %table.schedule
   = render :layout=>rotation_rows do
     %td
