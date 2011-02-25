@@ -11,7 +11,8 @@
       = f.text_field :event_date, :size=>10, :class=>'datepicker'
       = f.submit "Add date"
 %h1
-  %img.logo_thumb{:src => @event.image_url}/
+  - unless @event.image_url.blank?
+    %img.logo_thumb{:src => @event.image_url}/
   = @event.name
 
 - if @event_date
