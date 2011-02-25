@@ -1,12 +1,4 @@
 - title @event.name
-- content_for :header_bottom do
-  :javascript
-    $(document).ready(function(){
-      $( "#event_date_event_date" ).datepicker({ dateFormat: 'yy-mm-dd' });
-      $( "#date_selector" ).change(function() {
-        document.location.href = "#{event_path(@event)}/event_dates/" + this.value;
-      });
-    });
 
 .right_controls
   - if @event_date
@@ -16,7 +8,7 @@
     - if @event_date
       = link_to "delete date", event_event_date_path(@event, @event_date), :method => :delete, :confirm => "Are you sure?"
     = form_for [@event, @event.event_dates.build] do |f|
-      = f.text_field :event_date, :size=>10
+      = f.text_field :event_date, :size=>10, :class=>'datepicker'
       = f.submit "Add date"
 %h1
   %img.logo_thumb{:src => @event.image_url}/
