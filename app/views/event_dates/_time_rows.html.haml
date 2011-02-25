@@ -1,11 +1,11 @@
 - @event_date.time_slots.each_with_index do | time_slot, ts_index|
   - if ts_index % 4 == 0
-    = render :partial=>column_headings
+    = render :partial=>'rooms_column_header'
   %tr
     %td
       = time_slot.start_time.strftime("%I:%M %p")
     - @event_date.rooms.each_with_index do |room|
       - @time_slot_id = time_slot.id
       - @room_id = room.id
-      - @presentation = @grid["#{@time_slot_id}.#{@room_id}"]
+      - @presentation = @grid[[@time_slot_id, @room_id]]
       = yield

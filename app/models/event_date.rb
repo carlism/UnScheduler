@@ -6,13 +6,11 @@ class EventDate < ActiveRecord::Base
   has_many :rooms
 
   def build_grid
-    grid = {}
-    time_slots.each do |time_slot|
-      time_slot.presentations do |presentation|
-        room = presentation.room
-        grid["#{time_slots.id}.#{room.id}"] = presentation
-      end
+    presentations = Presentation.joins(:time_slot).
+      where("time_slots.event_date_id = ?", self.id)
+    presentations.inject({}) do |grid, presentation|
+      grid[[presentation.time_slot.id, presentation.room.id]] = presentation
+      grid
     end
-    grid
   end
 end
