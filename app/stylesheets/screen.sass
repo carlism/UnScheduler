@@ -1,0 +1,15 @@
+// This import applies a global reset to any page that imports this stylesheet.
+@import blueprint/reset
+// To configure blueprint, edit the partials/_base.sass file.
+@import partials/base
+// Import all the default blueprint modules so that we can access their mixins.
+@import blueprint
+// Import the non-default scaffolding module.
+@import compass/utilities/general/float
+@import compass/css3/border-radius
+@import blueprint/debug
+
+// Generate the blueprint framework according to your configuration:
++blueprint
+
+@import partials/application
