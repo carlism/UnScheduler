@@ -23,8 +23,14 @@
     = render :layout=>rotation_rows do
       %td
         - if !@presentation.nil? and @presentation.respond_to? :title
-          %strong= link_to @presentation.title, presentation_path(@presentation)
+          - if @event.admin?(current_user)
+            %strong= link_to @presentation.title, edit_presentation_path(@presentation), :remote=>true
+          - else
+            %strong= link_to @presentation.title, presentation_path(@presentation)
           %br
           = linkify @presentation.presenter
         - else
-          &nbsp;
+          - if @event.admin?(current_user)
+            = link_to "new", new_presentation_path(:time_slot_id=>@time_slot_id, :room_id=>@room_id), :remote=>true
+          - else
+            &nbsp;

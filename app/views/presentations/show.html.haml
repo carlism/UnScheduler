@@ -1,2 +1,15 @@
-%h1 Presentation#show
-%p Find me in app/views/presentation/show.html.haml
+%h1= @presentation.time_slot.event_date.event.name
+%h2= @presentation.title
+.field
+  Speaker:
+  = @presentation.presenter
+.field
+  Contact Info:
+  = @presentation.contact
+.field
+  Room:
+  = @presentation.room.name
+.field
+  Time:
+  = @presentation.time_slot.event_date.event_date
+  = @presentation.time_slot.start_time.strftime("%I:%M %p")
