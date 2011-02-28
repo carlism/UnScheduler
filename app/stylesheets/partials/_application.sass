@@ -1,0 +1,30 @@
+$title-background: #666
+$title-foreground: #FFF
+$base-font-size: 1em
+
+body.two-col
+  font-size: $base-font-size
+  +showgrid
+  +container
+  #header, #footer
+    +column(24)
+  #content
+    +column(19)
+  #sidebar
+    +column(5, true)
+
+.title_bar
+  background-color: $title-background
+  color: $title-foreground
+  font-size: $base-font-size * 2
+  +border-radius
+  padding: 0px 5px
+.event_block
+  +column(10)
+.logo
+  +column(9, true)
+  img
+    max-width: 360px
+    max-height: 100px
+.float-right
+  +float-right

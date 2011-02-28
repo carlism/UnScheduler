@@ -31,6 +31,8 @@ GEM
     arel (2.0.7)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
+    compass (0.10.6)
+      haml (>= 3.0.4)
     devise (1.1.5)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 1.0.2)
@@ -108,6 +110,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  compass
   devise
   haml
   haml-rails
