@@ -1,12 +1,12 @@
 = form_for @time_slot do |f|
   = f.hidden_field :event_date_id
-  %p= f.label :start_time
-  %br
-  = f.text_field :start_time
+  .horizontal
+    = f.label :start_time
+    = f.text_field :formatted_start_time, :autofocus=>"true"
 
-  %p= f.label :duration
-  %br
-  = f.text_field :duration
+  .horizontal
+    = f.label :duration
+    = f.text_field :duration
 
   = f.submit @time_slot.id ? "Update" : "Create"
-
+  =link_to "Cancel", event_event_date_url(@event_date.event, @event_date)

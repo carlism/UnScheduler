@@ -1,16 +1,17 @@
 = form_for @room do |f|
   = f.hidden_field :event_date_id
-  %p= f.label :name
-  %br
-  = f.text_field :name
+  .horizontal
+    = f.label :name
+    = f.text_field :name, :autofocus=>"true"
 
-  %p= f.label :location
-  %br
-  = f.text_field :location
+  .horizontal
+    = f.label :location
+    = f.text_field :location
 
-  %p= f.label :capacity
-  %br
-  = f.text_field :capacity, :size=>10
+  .horizontal
+    = f.label :capacity
+    = f.text_field :capacity, :size=>10
 
   = f.submit @room.id ? "Update" : "Create"
+  =link_to "Cancel", event_event_date_url(@event_date.event, @event_date)
 
