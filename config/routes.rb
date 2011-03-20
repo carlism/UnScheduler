@@ -11,4 +11,5 @@ Unscheduler::Application.routes.draw do
 
   root :to => "events#index"
 
+  match 'events/:event_id/event_dates/:id', :to => 'event_dates#swap', :via => 'post'
 end
