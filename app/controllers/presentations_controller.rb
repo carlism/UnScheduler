@@ -35,4 +35,15 @@ class PresentationsController < ApplicationController
       render :action => "edit"
     end
   end
+  
+  def destroy
+    @presentation = Presentation.find(params[:id])
+    @event_date = @presentation.time_slot.event_date
+    if @presentation.destroy
+      flash[:notice] = "Successfully deleted presentation."
+    else
+      flash[:alert] = "Failed to delete presentation."
+    end    
+    redirect_to(event_event_date_url(@event_date.event, @event_date))
+  end
 end
