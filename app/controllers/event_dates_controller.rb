@@ -1,6 +1,4 @@
 class EventDatesController < ApplicationController
-  layout "grid"
-
   def destroy
     @event_date = EventDate.find(params[:id])
     @event = @event_date.event
