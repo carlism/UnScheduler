@@ -1,30 +1,126 @@
-$title-background: #666
-$title-foreground: #FFF
 $base-font-size: 1em
+$color-1: #3B3013
+$color-2: #8F6031
+$color-3: #E88833
+$color-4: #9C0C0C
+$color-5: #FDF3C1
 
-body.two-col
+=page-box
+  +border-radius(4px, 4px)
+  +box-shadow(#CCC, 1px, 2px, 1px)
+  +linear-gradient(color-stops(#CCC, white, white))
+  border: 1px solid #999
+  padding: 6px 8px
+  margin-bottom: 15px
+=big-title
+  font-size: $base-font-size * 1.9
+  font-weight: bold
+  color: $color-4
+  text-transform: uppercase
+=medium-title
+  font-size: $base-font-size * 1.7
+  font-weight: bold
+  color: $color-3
+  font-variant: small-caps
+
+body
   font-size: $base-font-size
-  +showgrid
   +container
-  #header, #footer
-    +column(24)
-  #content
-    +column(19)
-  #sidebar
-    +column(5, true)
+  overflow: scroll
+  background-color: #CCC
+  color: black
+  #header, #footer, #content
+    +column(22, true)
+    background-color: white
+    +prepend(1)
+    +append(1)
 
-.title_bar
-  background-color: $title-background
-  color: $title-foreground
-  font-size: $base-font-size * 2
-  +border-radius
-  padding: 0px 5px
-.event_block
-  +column(10)
-.logo
-  +column(9, true)
-  img
-    max-width: 360px
-    max-height: 100px
-.float-right
-  +float-right
+#content
+  .title_bar
+    +page-box
+    .title
+      +big-title
+  .event_block
+    clear: both
+    +page-box
+    min-height: 100px
+    .event_name
+      +medium-title
+      a
+        color: $color-3
+    .logo
+      +column(8,true)
+      +push(0)
+      text-align: right
+      img
+        max-height: 90px
+        max-width: 300px
+  table.schedule
+    +inner-table-borders(1px, #999)
+    +table-scaffolding
+    th
+      +page-box
+      font-size: $base-font-size * 0.8
+
+td .presentation
+  font-size: $base-font-size * 0.9
+  text-align: center
+
+.drop-state-active
+  background-color: $color-5
+  border-width: 1px
+  border-style: dashed
+  border-color: $color-3
+  
+#header
+  padding-top: 15px
+  .title
+    font-size: $base-font-size * 1.9
+    display: inline
+  .menu_item
+    display: inline
+    margin-left: 30px
+    font-size: $base-font-size * 0.7
+    font-weight: bold
+    a
+      text-decoration: none
+      color: black
+  .sub_title
+    +float-right
+  .notice
+
+.black_overlay
+  display: none
+  position: absolute
+  top: 0%
+  left: 0%
+  width: 100%
+  height: 100%
+  background-color: black
+  z-index: 1001
+  -moz-opacity: 0.8
+  opacity: 0.80
+  filter: alpha(opacity=80)
+
+#dialog_box
+  +column(20)
+  +border-radius(4px, 4px)
+  +push(2)
+  position: absolute
+  top: 15%
+  height: 70%
+  padding-left: 25px
+  border: 1px solid #999
+  background-color: white
+  z-index: 1002
+  overflow: none
+  display: none
+  #sign_up
+    +column(9, true)
+    margin-left: 25px
+  #sign_in
+    +column(9)
+    +border(#999, 1px)
+
+form .horizontal label
+  +column(3)

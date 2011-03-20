@@ -1,6 +1,9 @@
 - title @event.name
 
-.right_controls
+.event_block
+  - unless @event.image_url.blank?
+    %img.logo{:src => @event.image_url}/
+  .event_name= @event.name
   - if @event_date
     %select{ :id => 'date_selector' }
       = options_from_collection_for_select @event.event_dates, 'id', 'event_date', @event_date.id
@@ -10,27 +13,13 @@
     = form_for [@event, @event.event_dates.build] do |f|
       = f.text_field :event_date, :size=>10, :class=>'datepicker'
       = f.submit "Add date"
-%h1
-  - unless @event.image_url.blank?
-    %img.logo_thumb{:src => @event.image_url}/
-  = @event.name
 
 - if @event_date
   - if @event.admin?(current_user)
     = link_to "new room", new_room_path({:event_date_id=>@event_date.id}), :remote=>true
     = link_to "new time", new_time_slot_path({:event_date_id=>@event_date.id}), :remote=>true
-  %table.schedule
+  %table{ :class=>[:schedule, rotation_rows, @event.admin?(current_user)]}
     = render :layout=>rotation_rows do
       %td
-        - if !@presentation.nil? and @presentation.respond_to? :title
-          - if @event.admin?(current_user)
-            %strong= link_to @presentation.title, edit_presentation_path(@presentation), :remote=>true
-          - else
-            %strong= link_to @presentation.title, presentation_path(@presentation)
-          %br
-          = linkify @presentation.presenter
-        - else
-          - if @event.admin?(current_user)
-            = link_to "new", new_presentation_path(:time_slot_id=>@time_slot_id, :room_id=>@room_id), :remote=>true
-          - else
-            &nbsp;
+        .presentation{ :id => [@time_slot_id, @room_id], :class => ['draggable', 'droppable', @event.admin?(current_user) ] }
+          =render :partial=>'presentation'

@@ -1,5 +1,6 @@
-%tr
-  %th.col_header Time
-  - @event_date.rooms.each do |room|
-    %th{ :width=> 90/@event_date.rooms.size }
-      = "#{room.name} (#{room.location})"
+%thead
+  %tr
+    %th.col_header Time
+    - @event_date.rooms.each do |room|
+      %th{ :id=>["room", room.id], :width=>"#{90/@event_date.rooms.size}%" }
+        = render :partial=>'room', :locals => { :room=>room }

@@ -26,4 +26,35 @@ class EventDatesController < ApplicationController
     @event = @event_date.event
     @grid = @event_date.build_grid
   end
+  
+  def update
+    @event_date = EventDate.find(params[:id])
+    @event_date.rooms.each do |room|
+      room.position = params[:room].index(room.id.to_s)
+      room.save
+    end
+  end
+  
+  def swap
+    @event = Event.find(params[:event_id])
+    @from = params[:from].split '_'
+    @to = params[:to].split '_'
+    @p = {}
+    @p[:from] = Presentation.find_by_time_slot_id_and_room_id(@from[0], @from[1])
+    @p[:to] = Presentation.find_by_time_slot_id_and_room_id(@to[0], @to[1])
+    ActiveRecord::Base.transaction do
+      if @p[:to]
+        @p[:to].time_slot_id, @p[:to].room_id = nil, nil
+        @p[:to].save          
+      end
+      if @p[:from]
+        @p[:from].time_slot_id, @p[:from].room_id = @to[0], @to[1]
+        @p[:from].save
+      end
+      if @p[:to]
+        @p[:to].time_slot_id, @p[:to].room_id = @from[0], @from[1]
+        @p[:to].save    
+      end
+    end
+  end
 end

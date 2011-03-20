@@ -1,0 +1,12 @@
+<% 
+  @presentation = @p[:to]
+  @time_slot_id = @from[0]
+  @room_id = @from[1]
+%>
+$("div#<%=params[:from]%>").html("<%= escape_javascript(render('presentation'))%>");
+<% 
+  @presentation = @p[:from]
+  @time_slot_id = @to[0]
+  @room_id = @to[1]
+%>
+$("div#<%=params[:to]%>").html("<%= escape_javascript(render('presentation'))%>");

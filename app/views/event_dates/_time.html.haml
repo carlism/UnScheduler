@@ -1,0 +1,5 @@
+- if @event.admin?(current_user)
+  = link_to time_slot.start_time.strftime("%I:%M %p"), edit_time_slot_path(time_slot), :remote=>true
+  = link_to "X", time_slot, :confirm => "Are you sure?", :method => :delete
+- else
+  = time_slot.start_time.strftime("%I:%M %p")

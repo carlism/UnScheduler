@@ -1,0 +1,5 @@
+- if @event.admin?(current_user)
+  = link_to "#{room.name} (#{room.location})", edit_room_path(room), :remote=>true
+  = link_to "X", room, :confirm => "Are you sure?", :method => :delete
+- else
+  = "#{room.name} (#{room.location})"

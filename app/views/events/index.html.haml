@@ -1,17 +1,17 @@
 - title "Events"
 
 .title_bar
-  Events
+  .title Events
   - if user_signed_in?
     .button= link_to "Create Event", new_event_path, :remote => true
 .events
   - @events.each do |event|
     .event_block
-      %h2= link_to event.name, event
+      - unless event.image_url.blank?
+        .logo= link_to image_tag(event.image_url, :class=>'logo_thumb'), event.site_url
+      .event_name= link_to event.name, event
       = event.description
       - if event.admin?(current_user)
         .button= link_to image_tag("icons/settings.png"), edit_event_path(event), :remote => true
       - if event.creator?(current_user)
         .button= link_to image_tag("icons/trash.png"), event, :confirm => "Are you sure?", :method => :delete
-    - unless event.image_url.blank?
-      .logo= link_to image_tag(event.image_url, :class=>'logo_thumb'), event.site_url

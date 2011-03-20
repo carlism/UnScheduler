@@ -1,5 +1,6 @@
-%tr
-  %th.col_header Room
-  - @event_date.time_slots.each do |time_slot|
-    %th{ :width=> 90/@event_date.time_slots.size }
-      = time_slot.start_time.strftime("%I:%M %p")
+%thead
+  %tr
+    %th.col_header Room
+    - @event_date.time_slots.each do |time_slot|
+      %th{ :width=>"#{90/@event_date.time_slots.size}%" }
+        = render :partial=>'time', :locals => { :time_slot=>time_slot }
