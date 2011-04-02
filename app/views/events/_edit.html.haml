@@ -1,22 +1,18 @@
 #new_event
   %h2 Edit Event
   = form_for @event, :url => { :action => :update } do |f|
-    %p 
+    .horizontal
       = f.label :name
-      %br/
-      = f.text_field :name
-    %p
+      = f.text_field :name, :size=>25, :autofocus=>"true"
+    .horizontal
       = f.label :description
-      %br/
-      = f.text_field :description
-    %p
+      = f.text_field :description, :size=>40
+    .horizontal
       = f.label :site_url
-      %br/  
-      = f.text_field :site_url
-    %p
+      = f.text_field :site_url, :size=>40
+    .horizontal
       = f.label :image_url
-      %br/
-      = f.text_field :image_url
+      = f.text_field :image_url, :size=>40
     %p 
       = f.submit "Update"
       = link_to "Cancel", root_path

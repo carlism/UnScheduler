@@ -12,6 +12,7 @@
       .event_name= link_to event.name, event
       = event.description
       - if event.admin?(current_user)
-        .button= link_to image_tag("icons/settings.png"), edit_event_path(event), :remote => true
-      - if event.creator?(current_user)
-        .button= link_to image_tag("icons/trash.png"), event, :confirm => "Are you sure?", :method => :delete
+        .buttons
+          %span.button= link_to image_tag("icons/settings.png"), edit_event_path(event), :remote => true
+          - if event.creator?(current_user)
+            %span.button= link_to image_tag("icons/trash.png"), event, :confirm => "Are you sure?", :method => :delete
