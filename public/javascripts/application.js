@@ -5,13 +5,12 @@ $(function() {
     document.location.href = this.value;
   });
   
-  $('table.room_rows.true').sortable(
+  $('table.room_rows.true tbody').sortable(
     {
       axis: 'y', 
       dropOnEmpty:false, 
       cursor: 'crosshair',
       items: 'tr',
-      containment: 'table.room_rows tbody',
       opacity: 0.4,
       scroll: true,
       update: function(event, ui){
@@ -23,10 +22,10 @@ $(function() {
     }
   );
   
-  
 	$( "div.draggable.true" ).draggable({ revert: true });
 	$( "div.droppable.true" ).droppable({
 	  hoverClass: "drop-state-active",
+	  accept: "div.draggable.true",
 		drop: function( event, ui ) {
       $.ajax({
           type: 'post', 
