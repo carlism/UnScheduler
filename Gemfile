@@ -13,6 +13,7 @@ gem 'ruby_parser'
 gem 'hpricot'
 gem 'haml'
 gem "haml-rails"
+gem 'compass'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -37,5 +38,4 @@ group :development, :test do
   gem 'webrat'
 	gem "rspec-rails", "~> 2.0.1"
 	gem 'sqlite3-ruby', :require => 'sqlite3'
-  gem 'compass'
 end
