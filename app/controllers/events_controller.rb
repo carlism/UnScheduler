@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   def index
-    @events = Event.all
+    @events = Event.all :include => [:event_dates], :order => 'event_dates.event_date desc'
   end
   
   def new
