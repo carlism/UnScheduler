@@ -22,7 +22,9 @@ $(function() {
     }
   );
   
-	$( "div.draggable.true" ).draggable({ revert: true });
+	$( "div.draggable.true" ).draggable({ 
+	  revert: true, 
+	  helper: 'clone' });
 	$( "div.droppable.true" ).droppable({
 	  hoverClass: "drop-state-active",
 	  accept: "div.draggable.true",
