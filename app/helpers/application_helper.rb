@@ -11,6 +11,6 @@ module ApplicationHelper
       text = text.gsub(/^@(\w+)/, 
         '<a target="_blank" href="http://twitter.com/\1">@\1</a>') 
     end
-    text
+    text.html_safe
   end
 end
