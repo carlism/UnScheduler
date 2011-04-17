@@ -1,11 +1,11 @@
 = render :partial=>'time_column_header'
-- @event_date.rooms.each_with_index do |room|
+- @event_date.rooms.each do |room|
   %tr{ :id => ["room", room.id] }
     %th    
       -if @event.admin?(current_user)
         [=]
       = render :partial=>'room', :locals => { :room=>room }
-    - @event_date.time_slots.each_with_index do |time_slot|
+    - @event_date.time_slots.each do |time_slot|
       - @time_slot_id = time_slot.id
       - @room_id = room.id
       - @presentation = @grid[[@time_slot_id, @room_id]]
