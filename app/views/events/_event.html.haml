@@ -1,0 +1,12 @@
+.event_block
+  - unless event.image_url.blank?
+    .logo= link_to image_tag(event.image_url, :class=>'logo_thumb'), event.site_url
+  .event_name= link_to event.name, event
+  Dates:
+  = event.event_dates.map { |event_date| event_date.event_date }.join ", "
+  %p= event.description
+  - if event.admin?(current_user)
+    .buttons
+      %span.button= link_to image_tag("icons/settings.png"), edit_event_path(event), :remote => true
+      - if event.creator?(current_user)
+        %span.button= link_to image_tag("icons/trash.png"), event, :confirm => "Are you sure?", :method => :delete
