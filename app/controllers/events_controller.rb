@@ -47,7 +47,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
-    if @event.creators.exists?(current_user)
+    if @event.creator?(current_user)
       if @event.destroy
         flash[:notice] = "Successfully deleted event."
       else
