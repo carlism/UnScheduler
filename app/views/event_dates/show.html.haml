@@ -2,7 +2,7 @@
 
 .event_block
   - unless @event.image_url.blank?
-    %img.logo{:src => @event.image_url}/
+    =link_to image_tag(@event.image_url, :class=>'logo'), @event.site_url
   .event_name= @event.name
   - if @event_date
     %select{ :id => 'date_selector' }

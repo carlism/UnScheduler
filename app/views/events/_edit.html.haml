@@ -16,11 +16,17 @@
     %p 
       = f.submit "Update"
       = link_to "Cancel", root_path
-  %p Administrators
   = form_for @new_admin, :remote => true do |f|
+    Add Administrator
     = f.hidden_field :event_id
     = f.hidden_field :role_type
     = text_field :user, :email
     = f.submit "Add Admin"
   #admins= render :partial=>'admins'
+  = form_for @new_domain, :remote => true do |f|
+    Add Domain
+    = f.hidden_field :event_id
+    = f.text_field :domain
+    = f.submit "Add Domain"
+  #domains= render :partial=>'domains'
   = link_to "Done", root_path

@@ -24,6 +24,7 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
     @new_admin = @event.roles.build(:role_type=>'admin')
+    @new_domain = @event.domains.build
   end
 
   def update
@@ -36,7 +37,11 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id], :include=>:event_dates)
+    if params[:id]
+      @event = Event.find(params[:id], :include=>:event_dates)
+    else
+      @event = Event.find_by_host(request.host)
+    end
     @event_date = @event.event_dates.first
     if @event_date
       redirect_to(event_event_date_url(@event, @event_date))
