@@ -24,7 +24,13 @@ class EventDatesController < ApplicationController
   def show
     @event_date = EventDate.find(params[:id])
     @event = @event_date.event
-    @grid = @event_date.build_grid
+    @grid = if @event.admin?(current_user)    
+      @event_date.build_grid
+    else
+      Rails.cache.fetch("presentation_grid_#{@event.id}", :expires_in => 3.minutes) do
+        @event_date.build_grid
+      end
+    end
   end
   
   def update

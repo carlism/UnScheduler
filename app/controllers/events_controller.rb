@@ -1,7 +1,9 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   def index
-    @events = Event.all :include => [:event_dates], :order => 'event_dates.event_date desc'
+    @events = Rails.cache.fetch("events", :expires_in => 6.hours) do
+      Event.all :include => [:event_dates], :order => 'event_dates.event_date desc'      
+    end    
   end
   
   def new
@@ -15,6 +17,7 @@ class EventsController < ApplicationController
 
     if @event.save
       @event.roles << @creator
+      Rails.cache.delete("events")
       redirect_to(events_url, :notice => 'Event was successfully created.')
     else
       render :action => "new"
@@ -30,6 +33,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(params[:event])
+      Rails.cache.delete("events")
       redirect_to(event_path, :notice => 'Event was successfully updated.')
     else
       render :action => "edit"
@@ -54,6 +58,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     if @event.creator?(current_user)
       if @event.destroy
+        Rails.cache.delete("events")
         flash[:notice] = "Successfully deleted event."
       else
         flash[:alert] = "Failed to delete event."
