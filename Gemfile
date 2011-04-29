@@ -10,10 +10,12 @@ gem 'devise'
 
 # Use haml
 gem 'ruby_parser'
-gem 'hpricot'
+# gem 'hpricot'
 gem 'haml'
 gem "haml-rails"
 gem 'compass'
+
+gem 'mysql'
 
 # Use unicorn as the web server
 # gem 'unicorn'
