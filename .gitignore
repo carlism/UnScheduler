@@ -4,3 +4,4 @@ log/*.log
 tmp/**/*
 .idea
 .rvmrc
+tmp/restart.txt
