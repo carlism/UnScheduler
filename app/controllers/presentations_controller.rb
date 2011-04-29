@@ -1,6 +1,8 @@
 class PresentationsController < ApplicationController
   def show
     @presentation = Presentation.find(params[:id])
+    @event_date = @presentation.time_slot.event_date
+    @event = @event_date.event
   end
 
   def edit

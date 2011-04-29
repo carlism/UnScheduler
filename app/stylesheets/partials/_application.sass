@@ -2,7 +2,7 @@
 =page-box
   +border-radius(4px, 4px)
   +box-shadow(#CCC, 1px, 2px, 1px)
-  +linear-gradient(color-stops(#CCC, white, white))
+  +linear-gradient(color-stops(#CCC, #EEE, #FFF))
   border: 1px solid #999
   padding: 6px 8px
   margin-bottom: 15px
@@ -22,6 +22,7 @@ body
   +container
   background-color: #CCC
   color: black
+  overflow: auto
   #header, #footer, #content
     +column(22, true)
     background-color: white
@@ -36,7 +37,7 @@ body
   .event_block
     clear: both
     +page-box
-    min-height: 100px
+    min-height: 125px
     .event_name
       +medium-title
       a
@@ -117,3 +118,9 @@ td .presentation
 
 form .horizontal label
   +column(3)
+.field   
+  clear: both
+  label
+    +column(3)
+  .data
+    +column(19,true)
