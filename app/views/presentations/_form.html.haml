@@ -10,6 +10,12 @@
   .horizontal
     = f.label :contact
     = f.text_field :contact
+  .horizontal
+    = f.label :description
+    = f.text_area(:description, :rows=>4)
+  .horizontal
+    = f.label :format
+    = f.text_field :format
   %p
     = f.submit
     =link_to "Cancel", event_event_date_url(@event_date.event, @event_date)
