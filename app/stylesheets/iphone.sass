@@ -1,0 +1,46 @@
+@import partials/base
+
+@import compass/css3/border-radius
+@import compass/css3/gradient
+@import compass/css3/box-shadow
+@import compass/utilities/general/float
+
+
+body
+  font-size: $base-font-size
+  background-color: #FFF
+  margin: 20px
+  color: black
+  #header
+    .title      
+      font-size: $base-font-size * 1.6
+    +border-top-radius(14px)    
+    +box-shadow(black, 1px, 2px, 1px)
+    background-color: #333
+    color: #CCC
+    padding: 10px    
+  #content
+    border: 1px solid black
+    +box-shadow(black, 1px, 2px, 1px)
+    background-color: white
+    .event_block
+      +linear-gradient(color-stops(#CCC, white, white))
+      padding: 5px    
+      clear: both
+      min-height: 100px
+      .event_name
+        font-size: $base-font-size * 1.6
+        a
+          color: $color-3
+      .logo
+        +float-right
+        text-align: right
+        img
+          max-height: 90px
+          max-width: 300px
+  #footer
+    +border-bottom-radius(14px)    
+    +box-shadow(black, 1px, 2px, 1px)
+    background-color: #666
+    padding: 10px    
+    color: white
