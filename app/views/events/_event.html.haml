@@ -1,7 +1,7 @@
 .event_block
+  .event_name= link_to event.name, event
   - unless event.image_url.blank?
     .logo= link_to image_tag(event.image_url, :class=>'logo_thumb'), event.site_url
-  .event_name= link_to event.name, event
   Dates:
   = event.event_dates.map { |event_date| event_date.event_date }.join ", "
   %p= event.description

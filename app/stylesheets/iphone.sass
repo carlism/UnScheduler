@@ -4,12 +4,12 @@
 @import compass/css3/gradient
 @import compass/css3/box-shadow
 @import compass/utilities/general/float
-
+$base-font-size: 0.8em
 
 body
   font-size: $base-font-size
   background-color: #FFF
-  margin: 20px
+  margin: 2px
   color: black
   #header
     .title      
@@ -17,14 +17,17 @@ body
     +border-top-radius(14px)    
     +box-shadow(black, 1px, 2px, 1px)
     background-color: #333
-    color: #CCC
-    padding: 10px    
+    color: $color-5
+    padding: 8px    
   #content
     border: 1px solid black
     +box-shadow(black, 1px, 2px, 1px)
-    background-color: white
+    background-color: $color-5
+    color: $color-1
     .event_block
-      +linear-gradient(color-stops(#CCC, white, white))
+      +linear-gradient(color-stops(#CCC, #DDD, #EEE))
+      background-color: white
+      border-top: 1px solid #999
       padding: 5px    
       clear: both
       min-height: 100px
@@ -35,12 +38,24 @@ body
       .logo
         +float-right
         text-align: right
-        img
-          max-height: 90px
-          max-width: 300px
+        img.logo_thumb
+          max-height: 70px
+          max-width: 200px
+      img.logo
+        max-height: 100px
+        max-width: 310px        
+    .time
+      background-color: #333
+      color: $color-5
+      padding: 2px
+    .presentation
+      +linear-gradient(color-stops(#CCC, #DDD, #EEE))
+      background-color: white
+      border-top: 1px solid #999
   #footer
     +border-bottom-radius(14px)    
     +box-shadow(black, 1px, 2px, 1px)
     background-color: #666
     padding: 10px    
+    font-size: $base-font-size
     color: white

@@ -1,4 +1,8 @@
 - if !@presentation.nil? and @presentation.respond_to? :title
-  %strong= link_to @presentation.title, presentation_path(@presentation)
-  %br
-  = linkify @presentation.presenter
+  .presentation{ :id => [@time_slot_id, @room_id] }
+    %strong= link_to @presentation.title, presentation_path(@presentation)
+    %br
+    = linkify @presentation.presenter
+    %br
+    in room: 
+    =@presentation.room.name

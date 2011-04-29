@@ -3,17 +3,17 @@
 .event_block
   - unless @event.image_url.blank?
     =link_to image_tag(@event.image_url, :class=>'logo'), @event.site_url
-  .event_name= @event.name
-  - if @event_date
-    %select{ :id => 'date_selector' }
-      = options_from_collection_for_select @event.event_dates, 'id', 'event_date', @event_date.id
+  .event_name
+    = @event.name
+    - if @event_date
+      %select{ :id => 'date_selector' }
+        = options_from_collection_for_select @event.event_dates, 'id', 'event_date', @event_date.id
 
 - if @event_date
   - @event_date.time_slots.each do |time_slot|
-    .iphone_section= time_slot.start_time.strftime("%I:%M %p")
+    .time= time_slot.start_time.strftime("%I:%M %p")
     - @event_date.rooms.each do |room|
       - @time_slot_id = time_slot.id
       - @room_id = room.id
       - @presentation = @grid[[@time_slot_id, @room_id]]
-      .presentation{ :id => [@time_slot_id, @room_id] }
-        =render :partial=>'presentation'
+      =render :partial=>'presentation'
