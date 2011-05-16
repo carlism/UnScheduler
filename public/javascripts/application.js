@@ -17,7 +17,7 @@ $(function() {
       update: function(event, ui){
         $.ajax({
             type: 'put', 
-            data: $('table.room_rows').sortable('serialize'), 
+            data: $('table.room_rows.true tbody').sortable('serialize'), 
             dataType: 'script'})
       }
     }
