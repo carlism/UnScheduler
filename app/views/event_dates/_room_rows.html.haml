@@ -1,8 +1,8 @@
 = render :partial=>'time_column_header'
 - @event_date.rooms.each do |room|
   %tr{ :id => ["room", room.id] }
-    %th
-      .handle
+    %th 
+   	  .handle
         -if @event.admin?(current_user)
           [=]
         = render :partial=>'room', :locals => { :room=>room }
