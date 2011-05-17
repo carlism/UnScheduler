@@ -46,12 +46,23 @@ class EventsController < ApplicationController
     else
       @event = Event.find_by_host(request.host)
     end
-    @event_date = @event.event_dates.first
+    
+    @event_date = select_today_or_first(@event)
     if @event_date
       redirect_to(event_event_date_url(@event, @event_date))
     else
       redirect_to(new_event_event_date_url(@event))
     end
+  end
+  
+  def select_today_or_first(event)
+    event.event_dates.select { |d|
+      d.event_date == Date.today
+    }.first || event.event_dates.first
+    # considered the following:
+    # t = EventDate.arel_table
+    # EventDate.where(t[:event_date].gteq(Date.today).and(t[:event_id].eq(1))).order(:event_date)
+    #   .union(EventDate.where(t[:event_date].lt(Date.today).and(t[:event_id].eq(1))).order(:event_date))
   end
 
   def destroy
