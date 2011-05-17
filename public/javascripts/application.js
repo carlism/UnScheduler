@@ -24,6 +24,7 @@ $(function() {
   );
   
 	$( "div.draggable.true" ).draggable({ 
+      handle: '.handle'
 	  revert: true, 
 	  helper: 'clone' });
 	$( "div.droppable.true" ).droppable({

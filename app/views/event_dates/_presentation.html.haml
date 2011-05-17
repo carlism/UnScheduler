@@ -1,6 +1,6 @@
 - if !@presentation.nil? and @presentation.respond_to? :title
   - if @event.admin?(current_user)
-    [=]
+    %span.handle [=]
     = link_to "X", @presentation, :confirm => "Are you sure?", :method => :delete    
     %strong= link_to @presentation.title, edit_presentation_path(@presentation), :remote=>true
   - else
