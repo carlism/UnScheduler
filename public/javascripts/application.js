@@ -10,7 +10,7 @@ $(function() {
       axis: 'y', 
       dropOnEmpty:false, 
       cursor: 'crosshair',
-      handle: 'th',
+      handle: 'th .handle',
       items: 'tr',
       opacity: 0.4,
       scroll: true,
