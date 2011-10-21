@@ -5,19 +5,19 @@ $(function() {
     document.location.href = this.value;
   });
   
-  $('table.room_rows.true tbody').sortable(
+  $('table.room_rows.true').sortable(
     {
       axis: 'y', 
       dropOnEmpty:false, 
       cursor: 'crosshair',
-      handle: 'th',
-      items: 'tr',
+      handle: '.handle',
+      items: 'tr.sorting',
       opacity: 0.4,
-      scroll: true,
+      scroll: false,
       update: function(event, ui){
         $.ajax({
             type: 'put', 
-            data: $('table.room_rows.true tbody').sortable('serialize'), 
+            data: $('table.room_rows.true').sortable('serialize'), 
             dataType: 'script'})
       }
     }

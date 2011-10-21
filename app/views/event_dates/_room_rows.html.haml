@@ -1,9 +1,9 @@
 = render :partial=>'time_column_header'
 - @event_date.rooms.each do |room|
-  %tr{ :id => ["room", room.id] }
+  %tr.sorting{ :id => ["room", room.id] }
     %th    
       -if @event.admin?(current_user)
-        [=]
+        %span.handle [=]
       = render :partial=>'room', :locals => { :room=>room }
     - @event_date.time_slots.each do |time_slot|
       - @time_slot_id = time_slot.id

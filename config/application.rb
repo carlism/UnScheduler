@@ -31,7 +31,7 @@ module Unscheduler
     # config.i18n.default_locale = :de
 
     # JavaScript files you want as :defaults (application.js is always included).
-    config.action_view.javascript_expansions[:defaults] = %w(jquery.min jquery-ui.min jquery.ui.touch-punch.min rails application)
+    config.action_view.javascript_expansions[:defaults] = %w(jquery-1.6.2.min jquery-ui-1.8.16.custom.min rails application)
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
