@@ -3,5 +3,5 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 .idea
-.rvmrc
+.ruby-*
 tmp/restart.txt
