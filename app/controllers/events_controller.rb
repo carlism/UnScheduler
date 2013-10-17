@@ -47,11 +47,13 @@ class EventsController < ApplicationController
       @event = Event.find_by_host(request.host)
     end
     
-    @event_date = select_today_or_first(@event)
-    if @event_date
-      redirect_to(event_event_date_url(@event, @event_date))
-    else
-      redirect_to(new_event_event_date_url(@event))
+    if @event
+      @event_date = select_today_or_first(@event)
+      if @event_date
+        redirect_to(event_event_date_url(@event, @event_date))
+      else
+        redirect_to(new_event_event_date_url(@event))
+      end
     end
   end
   
