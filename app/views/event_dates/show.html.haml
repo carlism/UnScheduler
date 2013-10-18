@@ -5,8 +5,11 @@
     .logo= link_to image_tag(@event.image_url), @event.site_url
   .event_name= @event.name
   - if @event_date
-    %select{ :id => 'date_selector' }
-      = options_from_collection_for_select @event.event_dates, 'id', 'event_date', @event_date.id
+    - if @event.event_dates.size > 1
+      %select{ :id => 'date_selector' }
+        = options_from_collection_for_select @event.event_dates, 'id', 'event_date', @event_date.id
+    - else
+      = @event_date.event_date
   - if @event.admin?(current_user)
     - if @event_date
       = link_to "delete date", event_event_date_path(@event, @event_date), :method => :delete, :confirm => "Are you sure?"

@@ -13,14 +13,12 @@
     = csrf_meta_tag
   %body
     #header
-      .title UnScheduler
       .menu_item= link_to 'Home', '/'
       - if user_signed_in?
         .menu_item= link_to "Sign out", destroy_user_session_path
         .menu_item= current_user.email
       - else
         .menu_item= link_to "Sign in/Sign up", new_user_session_path, :remote => true
-      .sub_title The BarCamp/UnConference Scheduler
       -if notice
         .notice= notice
       -if alert
