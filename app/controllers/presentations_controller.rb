@@ -24,7 +24,7 @@ class PresentationsController < ApplicationController
     @event_date = @presentation.time_slot.event_date
     redirect_to(event_event_date_url(@event_date.event, @event_date), :notice => 'Presentation was successfully created.')
   rescue ActiveRecord::RecordNotUnique => e
-    @time_slot = TimeSlot.find(params[:time_slot_id])
+    @time_slot = TimeSlot.find(params[:presentation][:time_slot_id])
     @event_date = @time_slot.event_date
     redirect_to(event_event_date_url(@event_date.event, @event_date), :alert => 'Presentation failed.')
   end
