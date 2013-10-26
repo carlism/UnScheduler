@@ -20,16 +20,12 @@ class PresentationsController < ApplicationController
 
   def create
     @presentation = Presentation.new(params[:presentation])
-    if @presentation.valid? 
-      logger.info "valid true"
-      @presentation.save
-      @event_date = @presentation.time_slot.event_date
-      redirect_to(event_event_date_url(@event_date.event, @event_date), :notice => 'Presentation was successfully created.')
-    else
-      logger.info "valid false"
-      render :action => "new"
-    end
-    logger.info "after if"
+    @presentation.save
+    @event_date = @presentation.time_slot.event_date
+    redirect_to(event_event_date_url(@event_date.event, @event_date), :notice => 'Presentation was successfully created.')
+  rescue RecordNotUnique => e
+    logger.error "valid false"
+    render :action => "new"
   end
 
   def update
