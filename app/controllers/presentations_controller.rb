@@ -23,7 +23,7 @@ class PresentationsController < ApplicationController
     @presentation.save
     @event_date = @presentation.time_slot.event_date
     redirect_to(event_event_date_url(@event_date.event, @event_date), :notice => 'Presentation was successfully created.')
-  rescue RecordNotUnique => e
+  rescue ActiveRecord::RecordNotUnique => e
     logger.error "valid false"
     render :action => "new"
   end
