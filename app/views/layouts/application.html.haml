@@ -21,8 +21,8 @@
         .menu_item= link_to "Sign in/Sign up", new_user_session_path, :remote => true
       -if notice
         .notice= notice
-      -if alert
-        .alert= alert
+      -if error
+        .error= error
     #content
       = yield
     #footer
