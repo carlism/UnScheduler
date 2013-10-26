@@ -26,17 +26,16 @@ class PresentationsController < ApplicationController
   rescue ActiveRecord::RecordNotUnique => e
     @time_slot = TimeSlot.find(params[:presentation][:time_slot_id])
     @event_date = @time_slot.event_date
-    redirect_to(event_event_date_url(@event_date.event, @event_date), :alert => 'Presentation failed.')
+    redirect_to(event_event_date_url(@event_date.event, @event_date), :alert => 'Presentation failed, time slot/room combination has been taken.')
   end
 
   def update
     @presentation = Presentation.find(params[:id])
-    if @presentation.update_attributes(params[:presentation])
-      @event_date = @presentation.time_slot.event_date
-      redirect_to(event_event_date_url(@event_date.event, @event_date), :notice => 'Presentation was successfully updated.')
-    else
-      render :action => "edit"
-    end
+    @event_date = @presentation.time_slot.event_date
+    @presentation.update_attributes(params[:presentation])
+    redirect_to(event_event_date_url(@event_date.event, @event_date), :notice => 'Presentation was successfully updated.')
+  rescue ActiveRecord::StaleObjectError => e
+    redirect_to(event_event_date_url(@event_date.event, @event_date), :alert => 'Presentation edit failed someone else edited it.')
   end
   
   def destroy

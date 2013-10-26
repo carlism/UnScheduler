@@ -1,6 +1,7 @@
 = form_for @presentation do |f|
   = f.hidden_field :time_slot_id
   = f.hidden_field :room_id
+  = f.hidden_field :lock_version
   .horizontal
     = f.label :title
     = f.text_field :title, :autofocus=>"true"
