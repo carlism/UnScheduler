@@ -1,3 +1,5 @@
+%style{:type=>"text/css"}
+  = @event.stylesheet
 .event_block
   - unless @event.image_url.blank?
     =link_to image_tag(@event.image_url, :class=>'logo'), @event.site_url

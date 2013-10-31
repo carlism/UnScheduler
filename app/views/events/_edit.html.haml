@@ -13,6 +13,9 @@
     .horizontal
       = f.label :image_url
       = f.text_field :image_url, :size=>40
+    .horizontal
+      =f.label :stylesheet
+      =f.text_area :stylesheet, :rows=>10, :cols=>60
     %p 
       = f.submit "Update"
       = link_to "Cancel", root_path
