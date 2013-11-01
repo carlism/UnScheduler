@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131017141353) do
+ActiveRecord::Schema.define(:version => 20131031193045) do
 
   create_table "domains", :force => true do |t|
     t.integer  "event_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20131017141353) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
+    t.text     "stylesheet"
   end
 
   create_table "presentations", :force => true do |t|
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20131017141353) do
     t.datetime "updated_at"
     t.text     "description"
     t.string   "format"
+    t.integer  "lock_version"
   end
 
   add_index "presentations", ["room_id", "time_slot_id"], :name => "index_presentations_on_room_id_and_time_slot_id", :unique => true
