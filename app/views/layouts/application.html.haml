@@ -1,11 +1,12 @@
 !!!
 %html
   %head
-    %title 
-      Unscheduler : 
+    %title
+      Unscheduler :
       = yield(:title) || "The BarCamp/Unconference Scheduler"
     = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
     = stylesheet_link_tag 'print.css', :media => 'print'
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Dosis:200,400'
     /[if lt IE 8]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
     = stylesheet_link_tag "jquery-ui-1.8.16.custom"
@@ -27,9 +28,9 @@
       = yield
     #footer
       %a{:href=>"mailto:carl.leiby+schedule@gmail.com"} Contact Us
-      This site is powered by open source software. 
+      This site is powered by open source software.
       %br
-      Learn more 
+      Learn more
       %a{:href=>"http://github.com/carlism/unscheduler"} where we maintain the code.
     #dialog_box
     #fade.black_overlay
