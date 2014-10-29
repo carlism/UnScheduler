@@ -17,12 +17,12 @@ class ApplicationController < ActionController::Base
   # def is_iphone?
   #   request.user_agent.to_s =~ /iphone|ipod/i
   # end
-  #
-  # def site_layout
+
+  def site_layout
   #   if is_iphone?
   #     "iphone"
   #   else
-  #     "application"
+      "application"
   #   end
-  # end
+  end
 end
