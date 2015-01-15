@@ -1,1 +1,5 @@
 UnScheduler
+
+This app can help you manage a schedule for a barcamp.  It's focus is on entering the sessions as they are organized on a public board.
+
+Questions and discussion about this code and app can be posted here: [gitter](https://gitter.im/carlism/UnScheduler)
