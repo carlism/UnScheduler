@@ -39,6 +39,7 @@ class EventDatesController < ApplicationController
     else
       session[:rotation] = :time_on_top
     end
+    puts "ROTATE params: #{params}"
     render :show
   end
   
