@@ -39,6 +39,7 @@ class EventDatesController < ApplicationController
     else
       session[:rotation] = :time_on_top
     end
+    @event_date = EventDate.find(params[:id])
     redirect_to(event_event_date_url(@event_date.event, @event_date))
   end
   
