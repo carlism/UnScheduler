@@ -7,9 +7,11 @@ class ApplicationController < ActionController::Base
   
   def setup_for_iphone
     if is_iphone? && !request.xhr?  
-      request.formats.unshift :html
-      request.formats.unshift :iphone
+      # request.formats.unshift :html
+      # request.formats.unshift :iphone
+      session[:rotation] ||= :time_on_side
       logger.debug "iphone formats: #{request.formats.inspect}"
+      
       session[:iphone_view] = true
     end  
   end
