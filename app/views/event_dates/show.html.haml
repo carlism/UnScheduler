@@ -12,7 +12,7 @@
         = options_from_collection_for_select @event.event_dates, 'id', 'event_date', @event_date.id
     - else
       = @event_date.event_date
-  = link_to "rotate table", rotate_event_event_date_path(), :remote => true
+  = link_to "rotate table", rotate_event_event_date_path()
   - if @event.admin?(current_user)
     - if @event_date
       = link_to "delete date", event_event_date_path(@event, @event_date), :method => :delete, :confirm => "Are you sure?"
