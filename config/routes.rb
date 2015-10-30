@@ -4,7 +4,11 @@ Unscheduler::Application.routes.draw do
   devise_for :users
 
   resources :events do
-    resources :event_dates
+    resources :event_dates do
+      member do
+        get 'rotate'
+      end
+    end
   end
   resources :roles
   resources :domains

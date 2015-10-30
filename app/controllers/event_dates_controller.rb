@@ -33,6 +33,16 @@ class EventDatesController < ApplicationController
     end
   end
   
+  def rotate
+    if session[:rotation] == :time_on_top
+      session[:rotation] = :time_on_side
+    else
+      session[:rotation] = :time_on_top
+    end
+    render :show
+  end
+  
+  
   def update
     @event_date = EventDate.find(params[:id])
     @event_date.rooms.each do |room|
