@@ -39,8 +39,7 @@ class EventDatesController < ApplicationController
     else
       session[:rotation] = :time_on_top
     end
-    puts "ROTATE params: #{params}"
-    render :show
+    redirect_to(event_event_date_url(@event_date.event, @event_date))
   end
   
   
